@@ -68,7 +68,7 @@ class AbstractGenerator(_Module):
     self._batch_norm_fn = batch_norm_fn
     self._spectral_norm = spectral_norm
 
-  def __call__(self, z, y, is_training, reuse=tf.AUTO_REUSE):
+  def __call__(self, z, y, is_training, reuse=tf.compat.v1.AUTO_REUSE):
     with tf.variable_scope(self.name, values=[z, y], reuse=reuse):
       outputs = self.apply(z=z, y=y, is_training=is_training)
     return outputs
