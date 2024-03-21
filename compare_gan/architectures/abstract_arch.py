@@ -113,7 +113,7 @@ class AbstractDiscriminator(_Module):
     self._layer_norm = layer_norm
     self._spectral_norm = spectral_norm
 
-  def __call__(self, x, y, is_training, reuse=tf.AUTO_REUSE):
+  def __call__(self, x, y, is_training, reuse=tf.compat.v1.AUTO_REUSE):
     with tf.variable_scope(self.name, values=[x, y], reuse=reuse):
       outputs = self.apply(x=x, y=y, is_training=is_training)
     return outputs
